@@ -3,12 +3,13 @@ import pets from '../utils/data/pets.json'
 import { useEffect, useState } from 'react'
 import colors from '../utils/globals/colors'
 import Header from '../components/Header'
-import perdita from '../utils/data/Images/perdita.jpg'
 
 
-const PetDetail = ({petId,portrait}) => {
+const PetDetail = ({route, portrait}) => {
 
+  const {petId} = route.params
   const [pet,setPet] = useState({})
+
 
   useEffect(()=>{
     const petFound = pets.find(pet => pet.id === petId)
@@ -30,8 +31,10 @@ const PetDetail = ({petId,portrait}) => {
           style={[styles.image, !portrait && { width: "40%", height: 200 }]}
           source={{ uri: pet?.image ? getImageUrl(pet.image) : null }}
           resizeMode="cover"
+          onLoadStart={() => console.log("La imagen está comenzando a cargarse...")}
+          onLoad={() => console.log("La imagen se ha cargado con éxito.")}
+          onError={(error) => console.log("Error al cargar la imagen:", error)}
         />
-        <Image source={'../utils/data/Images/perdita.jpg'}/>
         <View style={[styles.containerText,!portrait && {width:"30%"}]}>
           <Text style={styles.title}>{pet.name}</Text>
           <Text>{pet.description}</Text>

@@ -1,12 +1,12 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import pets from '../utils/data/pets.json'
-import Header from '../components/Header'
 import { useEffect, useState } from 'react'
 import PetByCategory from '../components/PetByCategory'
 import Search from '../components/Search'
 
-const PetsByCategory = ({categorySelected,selectedPetId}) => {
+const PetsByCategory = ({navigation, route}) => {
 
+  const {categorySelected} = route.params
   const [petsFiltered,setPetsFiltered] = useState([])
   const [keyword,setKeyword] = useState("")
 
@@ -25,12 +25,11 @@ const PetsByCategory = ({categorySelected,selectedPetId}) => {
 
   return (
     <>
-        <Header title={categorySelected}/>
         <Search handlerKeyword={handlerKeyword}/>
         <FlatList
           data={petsFiltered}
           keyExtractor={item => item.id}
-          renderItem={({item})=> <PetByCategory selectedPetId={selectedPetId} item={item}/>}
+          renderItem={({item})=> <PetByCategory navigation={navigation} item={item}/>}
         />
     </>
   )

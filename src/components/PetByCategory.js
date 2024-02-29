@@ -3,9 +3,9 @@ import React from 'react'
 import colors from '../utils/globals/colors'
 import fonts from '../utils/globals/fonts'
 
-const PetByCategory = ({item ,selectedPetId}) => {
+const PetByCategory = ({item ,navigation}) => {
   return (
-    <Pressable onPress={()=>selectedPetId(item.id)} style={styles.container}>
+    <Pressable onPress={()=>navigation.navigate("PetDetail",{petId:item.id})} style={styles.container}>
       <Text style={styles.text}>{item.id} {item.title}</Text>
       <Image style={styles.image} source={{uri:item.image[0]}} resizeMode="cover"/>
     </Pressable>
