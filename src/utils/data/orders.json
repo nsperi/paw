@@ -1,0 +1,36 @@
+[
+    {
+        "total": 30000,
+        "id":1,
+        "userId":2,
+        "createAt": 1679869276580,
+        "Items":[
+                    {
+                    "id":0,
+                    "quantity":1,
+                    "name":"Ruffo",
+                    "description": "Rufo necesita juntar $30.000 para poder cstear su cirugia de cadera",
+                    "price":30000,
+                    "stock":30000,
+                    "category":"Perros"
+                    }
+                ]
+    },
+    {   
+        "total": 20000,
+        "id":1,
+        "userId":2,
+        "createAt": 1679869276580,
+        "Items":[
+                    {
+                    "id":1,
+                    "quantity":1,
+                    "name":"Perdita",
+                    "description": "Necesitamos $20.000 para comprar la comida especial para Perdita",
+                    "price":20000,
+                    "stock":20000,
+                    "category":"Perros"
+                    }
+                ]            
+    }
+]

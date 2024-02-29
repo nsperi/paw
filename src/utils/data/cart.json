@@ -1,0 +1,23 @@
+{
+    "total":70000,
+    "items":[
+        {
+            "id":2,
+            "quantity":1,
+            "name":"Sidney",
+            "description": "Sidney necesita una camita nueva",
+            "price":10000,
+            "stock":10000,
+            "category":"Perros"
+        },
+        {
+            "id":5,
+            "quantity":1,
+            "name":"Michigan",
+            "description": "Necesitams $60.000 para poder pagar la cirugia de Michigan",
+            "price":60000,
+            "stock":60000,
+            "category":"Gatos"
+        }
+    ]
+}

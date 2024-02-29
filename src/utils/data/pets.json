@@ -1,0 +1,56 @@
+[
+    {
+        "id":0,
+        "category":"Perros",
+        "name": "Ruffo",
+        "description": "Rufo necesita juntar $30.000 para poder cstear su cirugia de cadera",
+        "image": "rufo.jpg",
+        "price":30000,
+        "stock": 30000
+    },
+    {
+        "id":1,
+        "category":"Perros",
+        "name": "Perdita",
+        "description": "Necesitamos $20.000 para comprar la comida especial para Perdita",
+        "image": "perdita.jpg",
+        "price":20000,
+        "stock": 20000
+    },
+    {
+        "id":2,
+        "category":"Perros",
+        "name": "Sidney",
+        "description": "Sidney necesita una camita nueva",
+        "image": "sidney.jpg",
+        "price":10000,
+        "stock": 10000
+    },
+    {
+        "id":3,
+        "category":"Perros",
+        "name": "Conan",
+        "description": "Ayudanos para poder pagar la reabilitacion de Conan",
+        "image": "conan.jpg",
+        "price":50000,
+        "stock":50000
+    },
+    {
+        "id":4,
+        "category":"Perros",
+        "name": "Viena",
+        "description": "Necesitams $30.000 para poder pagar la castracion de Viena",
+        "image": "viena.jpg",
+        "price":30000,
+        "stock":30000
+    },
+    {
+        "id":5,
+        "category":"Gatos",
+        "name": "Michigan",
+        "description": "Necesitams $60.000 para poder pagar la cirugia de Michigan",
+        "image": "michigan.jpg",
+        "price":60000,
+        "stock":60000
+    }
+]
