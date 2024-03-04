@@ -5,14 +5,14 @@ import {useFonts} from "expo-font"
 import { fontCollection } from './src/utils/globals/fonts'
 import colors from './src/utils/globals/colors'
 import MainNavigator from './src/navigation/MainNavigator'
+import { store } from './src/app/store'
+import { Provider } from 'react-redux'
 
 
 
 const App = () => {
 
   const [fontsLoaded] = useFonts(fontCollection)
-  const [categorySelected,setCategorySelected] = useState("")
-  const [petId,setPetId] = useState(0)
   const {width,height} = useWindowDimensions()
   const [portrait,setPortrait] = useState(true)
 
@@ -24,19 +24,12 @@ const App = () => {
 
   if(!fontsLoaded) return null
 
-  const selectedCategoryState = (category) => {
-    setCategorySelected(category)
-
-  }
-  const selectedPetId = (id) => {
-    setPetId(id)
-  }
-
-
   return (
     <>
       <StatusBar backgroundColor={colors.bgcolor} />
-      <MainNavigator/>
+      <Provider store={store}>
+        <MainNavigator/>
+      </Provider>
     </>
   )
 }

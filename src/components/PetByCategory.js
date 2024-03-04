@@ -1,14 +1,20 @@
-import { StyleSheet, Text, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, Image, Pressable, ScrollView } from 'react-native'
 import React from 'react'
 import colors from '../utils/globals/colors'
 import fonts from '../utils/globals/fonts'
 
 const PetByCategory = ({item ,navigation}) => {
   return (
-    <Pressable onPress={()=>navigation.navigate("PetDetail",{petId:item.id})} style={styles.container}>
-      <Text style={styles.text}>{item.id} {item.title}</Text>
-      <Image style={styles.image} source={{uri:item.image[0]}} resizeMode="cover"/>
-    </Pressable>
+    <ScrollView style={styles.scrollViewContainer}>
+      <Pressable onPress={()=>navigation.navigate("PetDetail",{petId:item.      id})} style={styles.container}>
+        <Text style={styles.text}>{item.name}</Text>
+        <Image
+            style={styles.image}
+            source={{ uri: item.image }}
+            resizeMode='cover'
+          />
+      </Pressable>
+    </ScrollView>
   )
 }
 
@@ -28,12 +34,17 @@ const styles = StyleSheet.create({
     },
     text:{
         width:"60%",
-        fontSize:16,
-        fontFamily:fonts.Amatic
+        fontSize:30,
+        fontFamily:fonts.Amatic,
+        color:colors.text,
+        fontWeight:'bold'
     },
     image:{
         minWidth:90,
         minHeight:90,
-        borderRadius:5
-    }
+        borderRadius:50
+    },
+    scrollViewContainer: {
+      flexGrow: 1,
+    },
 })

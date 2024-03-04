@@ -18,17 +18,20 @@ export default CardCategory
 const styles = StyleSheet.create({
     container:{
         width:"80%",
+        height:60,
         backgroundColor:colors.secondary,
         marginHorizontal:"10%",
         marginVertical:10,
         padding:20,
         alignItems:"center",
-        borderRadius:50
+        borderRadius:50,
+        alignContent:'center'
     },
     text:{
-        fontSize:40,
+        fontSize:30,
         fontFamily:fonts.Amatic,
         color:colors.text,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        textAlign:'center'
     }
 })

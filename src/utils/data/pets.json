@@ -4,7 +4,7 @@
         "category":"Perros",
         "name": "Ruffo",
         "description": "Rufo necesita juntar $30.000 para poder cstear su cirugia de cadera",
-        "image": "rufo.jpg",
+        "image": "../../../src/utils/data/Images/rufo.jpg",
         "price":30000,
         "stock": 30000
     },
@@ -13,7 +13,7 @@
         "category":"Perros",
         "name": "Perdita",
         "description": "Necesitamos $20.000 para comprar la comida especial para Perdita",
-        "image": "perdita.jpg",
+        "image": "../../../src/utils/data/Images/perdita.jpg",
         "price":20000,
         "stock": 20000
     },
@@ -22,7 +22,7 @@
         "category":"Perros",
         "name": "Sidney",
         "description": "Sidney necesita una camita nueva",
-        "image": "sidney.jpg",
+        "image": "../../../src/utils/data/Images/sidney.jpg",
         "price":10000,
         "stock": 10000
     },
@@ -31,7 +31,7 @@
         "category":"Perros",
         "name": "Conan",
         "description": "Ayudanos para poder pagar la reabilitacion de Conan",
-        "image": "conan.jpg",
+        "image": "../../../src/utils/data/Images/conan.jpg",
         "price":50000,
         "stock":50000
     },
@@ -40,7 +40,7 @@
         "category":"Perros",
         "name": "Viena",
         "description": "Necesitams $30.000 para poder pagar la castracion de Viena",
-        "image": "viena.jpg",
+        "image": "../../../src/utils/data/Images/viena.jpg",
         "price":30000,
         "stock":30000
     },
@@ -49,7 +49,7 @@
         "category":"Gatos",
         "name": "Michigan",
         "description": "Necesitams $60.000 para poder pagar la cirugia de Michigan",
-        "image": "michigan.jpg",
+        "image": "../../../src/utils/data/Images/michigan.jpg",
         "price":60000,
         "stock":60000
     }

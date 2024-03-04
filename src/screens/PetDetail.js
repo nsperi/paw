@@ -1,54 +1,41 @@
-import { StyleSheet, Text, View,Image,Pressable } from 'react-native'
-import pets from '../utils/data/pets.json'
+import { StyleSheet, Text, View,Image,Pressable,ScrollView } from 'react-native'
 import { useEffect, useState } from 'react'
 import colors from '../utils/globals/colors'
-import Header from '../components/Header'
+import { useDispatch } from 'react-redux'
+import { addCartItem } from '../features/cart/cartSlice'
+import { useGetPetQuery } from '../app/services/shop'
 
 
-const PetDetail = ({route, portrait}) => {
-
+const PetDetail = ({route}) => {
+  const dispatch = useDispatch()
   const {petId} = route.params
-  const [pet,setPet] = useState({})
-
-
-  useEffect(()=>{
-    const petFound = pets.find(pet => pet.id === petId)
-    setPet(petFound)
-  },[petId])
-
-  const getImageUrl = (imagePath) => {
-    const baseUrl = '../../utils/data/Images/';
-    const imageUrl = `${baseUrl}${imagePath}`;
-    console.log('ImageUrl:', imageUrl); 
-    return imageUrl;
-  };
-
+  const {data:pets,isLoading} = useGetPetQuery()
+  if(isLoading) return <View><Text>cargando...</Text></View>
+  const pet = pets.find(pet => pet.id === petId);
   return (
     <View style={styles.container}>
-    <Header title="Mascotas"/>
-    <View style={[styles.content,!portrait && {flexDirection:"row",gap:10,padding:20}] } >
-      <Image
-          style={[styles.image, !portrait && { width: "40%", height: 200 }]}
-          source={{ uri: pet?.image ? getImageUrl(pet.image) : null }}
-          resizeMode="cover"
-          onLoadStart={() => console.log("La imagen está comenzando a cargarse...")}
-          onLoad={() => console.log("La imagen se ha cargado con éxito.")}
-          onError={(error) => console.log("Error al cargar la imagen:", error)}
+    <View style={styles.content} >
+        <Image
+          style={styles.image}
+          source={{uri:pet?.image ? pet.image : null}}
+          resizeMode='cover'
         />
-        <View style={[styles.containerText,!portrait && {width:"30%"}]}>
+        <View style={styles.containerText}>
           <Text style={styles.title}>{pet.name}</Text>
           <Text>{pet.description}</Text>
         </View>
-        <View style={[styles.containerPrice ,!portrait && {width:"20%",flexDirection:"column"}]}>
+        <View style={styles.containerPrice }>
           <Text style={styles.price}>$ {pet.price}</Text>
-          <Pressable style={styles.buyNow}>
-            <Text style={styles.donateNowText}>Donate Now</Text>
+          <Pressable style={styles.donateNow} onPress={()=>dispatch(addCartItem(pet))}>
+            <Text style={styles.donateNowText}>Carrito</Text>
           </Pressable>
         </View>
       </View>
     </View>
   )
 }
+
+
 
 export default PetDetail
 
@@ -57,7 +44,8 @@ const styles = StyleSheet.create({
     width:"100%",
     flex:1,
     justifyContent:"start",
-    alignItems:"center"
+    alignItems:"center",
+    backgroundColor:colors.bgcolor
   },
   content:{
     width:"100%"
@@ -95,5 +83,8 @@ const styles = StyleSheet.create({
   },
   donateNowText:{
     color:colors.text,
-  }
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+  },
 })

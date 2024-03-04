@@ -27,7 +27,7 @@ const MainNavigator = () => {
                 component={ShopStack}
                 options={{
                     tabBarIcon: ({focused}) => 
-                    <TabBarIcon title="Mascotas" nameIcon="home" focused={focused}/>
+                    <TabBarIcon title="Home" nameIcon="home" focused={focused}/>
                 }}
                 />
                 <Tab.Screen 
