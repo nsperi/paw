@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, useWindowDimensions } from 'react-native'
+import { StyleSheet, useWindowDimensions } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect, useState } from 'react'
 import {useFonts} from "expo-font"

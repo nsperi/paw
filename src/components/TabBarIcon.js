@@ -5,7 +5,7 @@ import colors from '../utils/globals/colors'
 const TabBarIcon = ({title,nameIcon,focused}) => {
   return (
     <View style={styles.container}>
-      <Entypo name={nameIcon} size={25} color={focused ? colors.secondary:colors.bgcolor}/>  
+      <Entypo name={nameIcon} size={25} color={focused ? colors.secondary:colors.secondary}/>  
       <Text style={[styles.text,!focused && styles.textFocused]} >{title}</Text>
     </View>
   )
@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
         fontSize:15
     },
     textFocused:{
-        color: colors.bgcolor
+        color: colors.text
     }
 })

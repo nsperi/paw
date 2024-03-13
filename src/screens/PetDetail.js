@@ -1,15 +1,14 @@
 import { StyleSheet, Text, View,Image,Pressable,ScrollView } from 'react-native'
-import { useEffect, useState } from 'react'
 import colors from '../utils/globals/colors'
 import { useDispatch } from 'react-redux'
-import { addCartItem } from '../features/cart/cartSlice'
+import Counter from '../components/Counter'
 import { useGetPetQuery } from '../app/services/shop'
 
 
 const PetDetail = ({route}) => {
   const dispatch = useDispatch()
   const {petId} = route.params
-  const {data:pets,isLoading} = useGetPetQuery()
+  const {data:pets,isLoading} = useGetPetQuery(petId)
   if(isLoading) return <View><Text>cargando...</Text></View>
   const pet = pets.find(pet => pet.id === petId);
   return (
@@ -26,9 +25,10 @@ const PetDetail = ({route}) => {
         </View>
         <View style={styles.containerPrice }>
           <Text style={styles.price}>$ {pet.price}</Text>
-          <Pressable style={styles.donateNow} onPress={()=>dispatch(addCartItem(pet))}>
-            <Text style={styles.donateNowText}>Carrito</Text>
-          </Pressable>
+          <Counter 
+            initialValue={1}
+            product={pet} 
+            textButton="Carrito" />
         </View>
       </View>
     </View>

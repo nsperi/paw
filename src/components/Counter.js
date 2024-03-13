@@ -1,21 +1,24 @@
-import { StyleSheet, Text, View ,Button,TextInput } from 'react-native'
-import React, { useState } from 'react'
-import { useSelector,useDispatch } from 'react-redux'
-import { increment,decrement,incrementByAmount } from '../features/counter/counterSlice'
+import { StyleSheet, View, Button,Text } from 'react-native'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addCartItem } from '../features/cart/cartSlice'
 
-const Counter = () => {
+const Counter = ({initialValue,textButton,product}) => {
 
+    const [count,setCount] = useState(initialValue)
     const dispatch = useDispatch()
-    const count = useSelector((state)=> state.counter.value)
-    const [number,setNumber] = useState(0)
+
+    const handlerAddCartItem = (quantity) => {
+      dispatch(addCartItem({...product,quantity}))
+      setCount(1)
+    }
 
   return (
     <View style={styles.counterContainer}>
-        <Button title='Aumentar' onPress={()=> dispatch(increment()) }/>
-        <Text>{count}</Text>
-        <Button title='Disminuir'  onPress={ ()=> dispatch(decrement())  }/>
-        <TextInput style={styles.input} onChangeText={ (t) => setNumber(parseInt(t)) }/>
-        <Button title='monto' onPress={ ()=> dispatch(incrementByAmount(number)) } />
+        <Button title='+' onPress={()=> setCount(count + 1) }/>
+        <Text style={styles.text}>{count}</Text>
+        <Button title='-'  onPress={ ()=> setCount(count - 1) }/>   
+        <Button title={textButton} onPress={()=>handlerAddCartItem(count)} />
     </View>
   )
 }
@@ -24,13 +27,14 @@ export default Counter
 
 const styles = StyleSheet.create({
     counterContainer:{
+        width:200,
         flexDirection:"row",
         justifyContent:"space-around",
         alignItems:"center",
         margin:10
       },
-      input:{
-        borderWidth:2,
+      text:{
         width:50,
+        textAlign:"center"
       }
 })
