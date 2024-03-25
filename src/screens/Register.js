@@ -8,6 +8,7 @@ import { useRegisterMutation } from '../app/services/auth'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/auth/authSlice'
 import { registerSchema } from '../utils/validations/authSchema'
+import { insertSession } from '../utils/db'
 
 const Register = ({navigation}) => {
 
@@ -25,6 +26,7 @@ const Register = ({navigation}) => {
       try {
         registerSchema.validateSync({email,password,confirmPassword})
         const {data} = await  triggerRegister({email,password})
+        insertSession(data)
         dispatch(setUser({email:data.email,idToken:data.idToken,localId:data.localId}))
       } catch (error) {
         setErrorEmail("")
@@ -103,12 +105,11 @@ const styles = StyleSheet.create({
       fontFamily:fonts.Amatic
     },
     sub:{
-      fontSize:14,
-      fontFamily:fonts.Amatic
+      fontSize:20,
     },
     subLink:{
-      fontSize:14,
-      fontFamily:fonts.Amatic,
-      color:colors.text
+      fontSize:20,
+      color:colors.alternative,
+      fontWeight:'bold'
     }
 })
